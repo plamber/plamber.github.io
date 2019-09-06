@@ -130,6 +130,11 @@ ga('send', 'pageview');
         {% if site.follow-linkedin %}
         <a target="_blank" href="{{site.follow-linkedin}}">
             <i class="fab fa-linkedin-in"></i>
+        </a>&nbsp;&nbsp;
+        {% endif %}
+        {% if site.follow-github %}
+        <a target="_blank" href="{{site.follow-github}}">
+            <i class="fab fa-github"></i>
         </a>
         {% endif %}
         {% if site.mailchimp-list %}
