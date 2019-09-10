@@ -19,7 +19,7 @@ You first have to register an application on your network. We are going to use t
 The authentication can be done by following [server side flow authentication](https://developer.yammer.com/docs/oauth-2). I prefer to use the *generate a developer token for this application* to avoid these steps and directly jump to the development.
 
 {:.center}
-![](../assets/images/yammerAppGeneration.png)
+![](../assets/images/yappgen.png)
 
 Generate the developer token as a verified admin and use this token as *bearer token* in the next code snippets. 
 
