@@ -916,6 +916,11 @@ iframe {
     margin-bottom: 15px;
   }
 
+.alert a {
+    color: white;
+    text-decoration: underline;
+}
+
 .alert.success {
     background-color: #4CAF50;
 }
