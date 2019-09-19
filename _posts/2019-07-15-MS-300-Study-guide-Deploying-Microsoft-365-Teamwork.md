@@ -4,7 +4,7 @@ title:  "MS-300 Study guide: Deploying Microsoft 365 Teamwork"
 author: plamber
 categories: [ Certifications, Microsoft 365 ]
 tags: [Certifications, Study Guide, Microsoft 365, MS-300]
-featured: true
+featured: false
 ---
 The [MS-300](https://www.microsoft.com/en-us/learning/exam-ms-300.aspx) and [MS-301](https://www.microsoft.com/en-us/learning/exam-ms-301.aspx) are required to obtain the **Microsoft 365 Certified: Teamwork Administrator Associate** certificate. Latter, is required with the exams [MS-100](https://www.microsoft.com/en-us/learning/exam-ms-100.aspx) and [MS-101](https://www.microsoft.com/en-us/learning/exam-ms-101.aspx) to obtain the [Microsoft 365 Certified Enterprise Administrator Expert](https://www.microsoft.com/en-us/learning/m365-enterprise-administrator.aspx).
 
@@ -142,7 +142,7 @@ External resources
 * configure Stream channels to allow integration with Teams
 * enable viewing, sharing, and embedding of Microsoft Stream video content in Teams, SharePoint Online, and Yammer
 * deploy, configure and manage Live Events to publish with Yammer, Stream, and Teams
-* configure company*wide channel creation
+* configure companywide channel creation
 
 **Integrate M365 workloads with external data and systems**
 * identify data access requirements to integrate with line*of*business solutions

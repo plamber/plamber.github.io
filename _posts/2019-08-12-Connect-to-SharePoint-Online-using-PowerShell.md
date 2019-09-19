@@ -5,6 +5,7 @@ author: plamber
 categories: [ IT Pro, SharePoint ]
 tags: [PowerShell, SharePoint, Office 365, Microsoft 365]
 featured: false
+series: "ConnectToMicrosoft365"
 ---
 The SharePoint Online Management Shell is a Windows PowerShell module that can be installed on your Windows client or server. It is a set of commandlets that help you manage SharePoint Online users, sites, and site collections. Useful for the daily business and batch operations on multiple SharePoint Online sites. If you want to use it you need to have the following prerequisites:
 

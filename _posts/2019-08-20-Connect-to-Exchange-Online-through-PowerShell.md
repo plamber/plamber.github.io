@@ -5,6 +5,7 @@ author: plamber
 categories: [ IT Pro, Exchange ]
 tags: [PowerShell, Exchange, Office 365, Microsoft 365]
 featured: false
+series: "ConnectToMicrosoft365"
 ---
 Exchange Online PowerShell allows you to manage your Exchange Online settings from the command line. As a SharePoint administrator, I usually need the commands that allow me to manager Office 365 Unified Groups and settings.
 

@@ -2,7 +2,7 @@
 layout: post
 title:  "Office 365 Video self-service migration to Microsoft Stream fails with an access denied error"
 author: plamber
-categories: [ Administrato, IT Pro, Stream ]
+categories: [ Administration, IT Pro, Stream ]
 tags: [Stream, Office 365, Microsoft 365]
 featured: false
 ---

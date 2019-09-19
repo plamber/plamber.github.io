@@ -4,7 +4,7 @@ title:  "Delete a Yammer message through the Yammer REST API with PowerShell"
 author: plamber
 categories: [ Development, PowerShell, Yammer ]
 tags: [Yammer, Office 365, Microsoft 365]
-featured: true
+featured: false
 series: YammerRestApi
 ---
 You can delete a message through API as described [here](https://developer.yammer.com/docs/messagesid). The snippet below shows how you can do it through PowerShell. You simply need a bearer token and the message id to delete.
