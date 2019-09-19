@@ -5,15 +5,10 @@ permalink: /imprint
 comments: false
 ---
 
-**NUBO GmbH**<br />
-Morassistrasse 20<br />
-Munich 80496<br />
-Germany<br />
+**Patrick Lamber**<br />
+Brennerstrasse 84<br />
+39040 Vahrn<br />
+Italy<br />
 
 Phone: +393453737496<br />
 E-Mail: patrick@nubo.eu<br />
-
-VAT ID: DE284483373<br />
-
-District Court Munich Trade<br />
-HRB 200 001

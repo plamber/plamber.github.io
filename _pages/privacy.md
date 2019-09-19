@@ -11,7 +11,7 @@ comments: false
 <p>I. Information about us as controllers of your data<br>II. The rights of users and data subjects<br>III. Information about the data processing</p>
 <h3>I. Information about us as controllers of your data</h3>
 <p>The party responsible for this website (the "controller") for purposes of data protection law is:</p>
-<p><span style="color: #ff0000;">NUBO GmbH</span><br><span style="color: #ff0000;">80496 Morassistrasse 20</span><br><span style="color: #ff0000;">Munich</span><br><span style="color: #ff0000;">Germany</span></p>
+<p><span style="color: #ff0000;">Patrick Lamber</span><br><span style="color: #ff0000;">Brennerstrasse 84</span><br><span style="color: #ff0000;">Vahrn</span><br><span style="color: #ff0000;">Italy</span></p>
 <p><span style="color: #ff0000;">Telephone: +39 345 3737 496</span><br><span style="color: #ff0000;">Email: patrick@nubo.eu</span></p>
 <p>The controller's data protection officer is:</p>
 <p><span style="color: #ff0000;">Patrick Lamber&nbsp;</span></p>
