@@ -83,6 +83,26 @@ post_class: post-template
                 {{content}}
             </div>
 
+            {% if page.series  %}
+                <div class="seriesBox">
+                    This post is part of a post series.
+                    <ul>
+                        {% for post in site.posts reversed %}
+                            {% if post.series == page.series %}
+                                <li>
+                                {% if post.url == page.url %}
+                                <b>{{ post.title }} (this post)</b>
+
+                                {% else %}
+                                    <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                                {% endif %}
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+
             <!-- Rating -->
             {% if page.rating %}
             <div class="rating mb-4 d-flex align-items-center">
