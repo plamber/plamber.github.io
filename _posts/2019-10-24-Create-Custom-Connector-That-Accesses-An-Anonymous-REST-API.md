@@ -7,6 +7,8 @@ tags: [Development, Custom Connectors, Microsoft Flow, PowerApps, Microsoft 365]
 featured: false
 series: CustomConnectorsFlowAndPowerApps
 ---
+> You can download the source code for this series directly from my [GitHub repository](https://github.com/plamber/powerplattformcustomconnectors/). The name of this sample project is *01. SimpleRESTApi*.
+
 In this post, we are going to create our first custom connector definition in Microsoft Flow. For sake of simplicity, the custom connector will consume one single *action* retrieving data from an anonymous ASP.NET Core REST API hosted in Azure.
 I am going to guide you on how to create your first connector from scratch.
 

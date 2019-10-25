@@ -9,6 +9,8 @@ series: CustomConnectorsFlowAndPowerApps
 ---
 > With this blog series, I am to provide you examples on how to build your custom connectors for Microsoft Flow and PowerApps. You can find the official documentation provided by Microsoft [here](https://docs.microsoft.com/en-us/connectors/custom-connectors/).
 
+> You can download the source code for this series directly from my [GitHub repository](https://github.com/plamber/powerplattformcustomconnectors/).
+
 The [Microsoft Power Platform](https://powerplatform.microsoft.com/en-us/) aims to improve productivity across your business with an integrated application platform that combines Power BI, PowerApps, and Microsoft Flow. Targeting the citizen developers in an organization, people can analyze (with Power BI), act (with PowerApps), and automate (with Microsoft Flow) solutions with no or less code. 
 
 ## What are data connectors?
