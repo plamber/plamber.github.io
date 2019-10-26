@@ -28,15 +28,15 @@ We are not interested in building complex APIs in this exercise. The ASP.NET Cor
 - Specify your desired Project Name. I am going to call *SimpleRESTApi*.
 - When asked for the type of web application, choose *API*
 
-This will create a standard ASP.NET Core Web Application template with the *ValuesController*. When starting the debugger it will immediately launch your endpoint [YourLocalHostAddress]/api/values and return an array of values: ["value1","value2"].
+This will create a standard ASP.NET Core Web Application template with the *ValuesController*. When starting the debugger it will immediately launch your endpoint [PutYourLocalHostAddressHere]/api/values and return an array of values: ["value1","value2"].
 
 #### Publish your Web Application to Azure
 We need to push this simple API using the publishing feature in Visual Studio. You can find out how this works [here](https://docs.microsoft.com/en-us/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
 
 Once published, note down the URL that you get from Azure. This is important for the custom connector definition later on. You have to note down the following information:
 
-- Your Azure host: [YourAzureHostAddress]
-- Your REST endpoint for the Values API: [YourAzureHostAddress]/api/values
+- Your Azure host: [PutYourAzureHostAddressHere]
+- Your REST endpoint for the Values API: [PutYourAzureHostAddressHere]/api/values
 
 ## 2) Create the custom connector in Flow
 Login to your Microsoft Flow interface and choose the *Custom Connectors* option in the menu.
@@ -56,7 +56,7 @@ You will be redirected to the next interface. This interface is subdivided into 
 ![](../../assets/images/2019-10-24-06-36-36.png)
 
 #### Changes in the General tab
-You can play around with the *General* tab. The most important thing to consider for this example is to fill out the correct *host* value. You noted it before already when publishing your REST API to Azure. Therefore, it will be [YourAzureHostAddress].
+You can play around with the *General* tab. The most important thing to consider for this example is to fill out the correct *host* value. You noted it before already when publishing your REST API to Azure. Therefore, it will be [PutYourAzureHostAddressHere] without the protocol (*HTTPS*).
 
 #### Changes in the Security tab
 We will skip this tab because we are not implementing any authentication for our anonymous connector.
