@@ -2,23 +2,23 @@
 layout: post
 title:  "Create a custom connector that accesses an anonymous REST API"
 author: plamber
-categories: [ Development, Developer, Microsoft Flow, PowerApps ]
-tags: [Development, Custom Connectors, Microsoft Flow, PowerApps, Microsoft 365]
+categories: [ Development, Developer, Power Automation, PowerApps ]
+tags: [Development, Custom Connectors, Power Automation, PowerApps, Microsoft 365]
 featured: false
 series: CustomConnectorsFlowAndPowerApps
 ---
 > You can download the source code for this series directly from my [GitHub repository](https://github.com/plamber/powerplattformcustomconnectors/). The name of this sample project is *01. SimpleRESTApi*.
 
-In this post, we are going to create our first custom connector definition in Microsoft Flow. For sake of simplicity, the custom connector will consume one single *action* retrieving data from an anonymous ASP.NET Core REST API hosted in Azure.
+In this post, we are going to create our first custom connector definition in Power Automation. For sake of simplicity, the custom connector will consume one single *action* retrieving data from an anonymous ASP.NET Core REST API hosted in Azure.
 I am going to guide you on how to create your first connector from scratch.
 
 ## What do I need to get started?
 This is the prerequisites to get this example up-and-running:
 - Any Visual Studio version with ASP.NET Core
 - An Azure Subscription to host your REST API
-- A Microsoft Flow subscription with the ability to create your custom connector
+- A Power Automation subscription with the ability to create your custom connector
 - Some basic knowledge about ASP.NET core and REST APIs
-- Some basic knowledge on how to create a flow in Microsoft Flow
+- Some basic knowledge on how to create a flow in Power Automation
 
 ## 1) Create your API
 We are not interested in building complex APIs in this exercise. The ASP.NET Core Web Application template will be sufficient.
@@ -38,8 +38,8 @@ Once published, note down the URL that you get from Azure. This is important for
 - Your Azure host: [PutYourAzureHostAddressHere]
 - Your REST endpoint for the Values API: [PutYourAzureHostAddressHere]/api/values
 
-## 2) Create the custom connector in Flow
-Login to your Microsoft Flow interface and choose the *Custom Connectors* option in the menu.
+## 2) Create the custom connector in Power Automation
+Login to your Power Automation interface and choose the *Custom Connectors* option in the menu.
 
 ![](../../assets/images/2019-10-24-06-33-45.png)
 
@@ -51,7 +51,7 @@ You will be redirected to the next interface. This interface is subdivided into 
 - General: specify the REST API endpoint, a description, and an icon for the connector
 - Security: configure the authentication technique used to authenticate your users against the connector
 - Definition: allows you to define actions and triggers for your connector
-- Test: allows you to test the endpoints without the need of launching Microsoft Flow and dedicated workflows
+- Test: allows you to test the endpoints without the need of launching Power Automation and dedicated workflows
 
 ![](../../assets/images/2019-10-24-06-36-36.png)
 
@@ -78,7 +78,7 @@ You can perform some basic tests. You just need to create a *Connection*, select
 Congratulations, you just created and tested your first custom connector.
 
 ## 3) Share your connector
-You are the owner of the custom connector. You will be able to use it immediately in Microsoft Flow. On the other hand, you can start sharing your connector with individuals or the whole organization.
+You are the owner of the custom connector. You will be able to use it immediately in Power Automation. On the other hand, you can start sharing your connector with individuals or the whole organization.
 
 You can do this from the custom connector overview page. Select *Invite another user* 
 
@@ -91,7 +91,7 @@ Select individuals or share them with the whole organization as shown in the nex
 In case you want to share the connector with the rest of the world, Microsoft allows you to certify your connector. You can do this following [this documentation](https://docs.microsoft.com/en-us/connectors/custom-connectors/submit-certification).
 
 #### 4) Use the connector
-After saving and sharing your custom connector, the custom connector is accessible by Flow users using the *Custom* tab when selecting an action.
+After saving and sharing your custom connector, the custom connector is accessible by Power Automation users using the *Custom* tab when selecting an action.
 
 ![](../../assets/images/2019-10-24-06-44-56.png)
 

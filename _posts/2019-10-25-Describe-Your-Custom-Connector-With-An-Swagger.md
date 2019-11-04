@@ -2,18 +2,18 @@
 layout: post
 title:  "Create a custom connector with an OpenAPI definition (aka Swagger) from an ASP.NET Core solution"
 author: plamber
-categories: [ Development, Developer, Microsoft Flow, PowerApps ]
-tags: [Development, Custom Connectors, Microsoft Flow, PowerApps, Microsoft 365]
+categories: [ Development, Developer, Power Automation, PowerApps ]
+tags: [Development, Custom Connectors, Power Automation, PowerApps, Microsoft 365]
 featured: false
 series: CustomConnectorsFlowAndPowerApps
 ---
-> You can download the source code for this series directly from my [GitHub repository](https://github.com/plamber/powerplattformcustomconnectors/). The name of this sample project is *02. CustomConnectorWithSwagger*.
+> You can download the source code for this series directly from my [GitHub repository](https://github.com/plamber/powerplattformcustomconnectors/). The name of this sample project is *02. CustomConnectorSwagger*.
 
 While in the previous posts you learned how to define a custom connector from scratch, this post will show you how you can leverage an OpenAPI definition coming from your ASP.NET Core REST application to create a custom connector. 
 
 The OpenAPI Specification (formerly Swagger Specification) is an API description format for REST APIs. In this file, you can describe your entire API, including the endpoints, operations, input-output for each operation, and authentication methods. You can find more information about this specification [here](https://swagger.io/docs/specification/about/).
 
-When creating a new custom connector for Microsoft Flow, you can upload an OpenAPI specification of your endpoints to speed-up the creation process for your flow.
+When creating a new custom connector for Power Automation, you can upload an OpenAPI specification of your endpoints to speed-up the creation process for your flow.
 
 ## How to get started?
 I created a project on GitHub that can be used to explore these capabilities and benefits. This project shows you how you can describe each action with OpenAPI keywords using Swashbuckle. To get everything up-and-running, follow these steps:
@@ -80,7 +80,7 @@ public ActionResult<IEnumerable<Product>> Get()
 ## Let's create the custom connector using the OpenAPI definition
 You can download the Swagger file from *[YourAzureHostAddress]/swagger/v1/swagger.json*. This file is required during the custom connector creation.
 
-Login to your Microsoft Flow interface and choose the *Custom Connectors* option in the menu.
+Login to your Power Automation interface and choose the *Custom Connectors* option in the menu.
 
 ![](../../assets/images/2019-10-24-06-33-45.png)
 
@@ -93,4 +93,4 @@ You will be redirected to the next interface. All important values are already f
 You can further change the definition if required and the save the connector. The rest works the same as described in the [previous post](/Create-Custom-Connector-That-Accesses-An-Anonymous-REST-API).
 
 ## Conclusion
-In this post we saw that you can leverage the OpenAPI definition of your REST APIs to create a custom connector in Microsoft Flow. This approach will not only improve the documentation for your endpoints, it also speeds up the creation of the custom connectors. 
+In this post we saw that you can leverage the OpenAPI definition of your REST APIs to create a custom connector in Power Automation. This approach will not only improve the documentation for your endpoints, it also speeds up the creation of the custom connectors. 
