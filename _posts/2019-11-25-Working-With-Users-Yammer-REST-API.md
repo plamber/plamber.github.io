@@ -4,7 +4,7 @@ title:  "Working with users using the Yammer REST API and PowerShell"
 author: plamber
 categories: [ Development, PowerShell, Yammer ]
 tags: [Yammer, Office 365, Microsoft 365]
-featured: true
+featured: false
 series: YammerRestApi
 ---
 In this post I would like to go through some of the endpoints in the [Yammer REST API](https://developer.yammer.com/docs/) handling user profiles in a network. 

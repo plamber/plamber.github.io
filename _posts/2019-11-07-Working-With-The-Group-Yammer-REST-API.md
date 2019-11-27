@@ -4,7 +4,7 @@ title:  "Working with groups using the Yammer REST API and PowerShell"
 author: plamber
 categories: [ Development, PowerShell, Yammer ]
 tags: [Yammer, Office 365, Microsoft 365]
-featured: true
+featured: false
 series: YammerRestApi
 ---
 The Yammer REST API is well documented [here](https://developer.yammer.com/docs/). On the other hand, you might miss some documentation regarding some endpoints on that page. For example, there is no notion about how to interact with Yammer Groups. Fortunately, with a little bit of network tracing and by following the naming convention of the other endpoints, you might be able to identify how to interact with groups quite easily. This post summarizes how to access the groups endpoint.

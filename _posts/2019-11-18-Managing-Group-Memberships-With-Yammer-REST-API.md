@@ -4,7 +4,7 @@ title:  "Manage the group memberships using the Yammer REST API and PowerShell"
 author: plamber
 categories: [ Development, PowerShell, Yammer ]
 tags: [Yammer, Office 365, Microsoft 365]
-featured: true
+featured: false
 series: YammerRestApi
 ---
 This post will show how to use the Yammer REST API for managing the group memberships of a group. You can find the documentation of the Yammer REST API [here](https://developer.yammer.com/docs/).

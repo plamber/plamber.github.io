@@ -4,7 +4,7 @@ title:  "Get all Yammer messages through the Yammer REST API with PowerShell"
 author: plamber
 categories: [ Development, PowerShell, Yammer ]
 tags: [Yammer, Office 365, Microsoft 365]
-featured: true
+featured: false
 series: YammerRestApi
 ---
 The Yammer REST Api allows you to return messages through the interface described [here](https://developer.yammer.com/docs/messagesjson). A call to that API returns a batch of 20 messages that can be limited to fewer messages with the *limit* operation. The drawback is that you can't ask for the last 500 messages without making multiple calls to the API.

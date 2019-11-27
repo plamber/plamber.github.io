@@ -4,7 +4,7 @@ title:  "Get all Yammer users through the Yammer REST API with PowerShell"
 author: plamber
 categories: [ Development, PowerShell, Yammer ]
 tags: [Yammer, Office 365, Microsoft 365]
-featured: true
+featured: false
 series: YammerRestApi
 ---
 The Yammer REST Api allows you to return users through the interface described [here](https://developer.yammer.com/docs/). A call to that API returns a batch of 50 users. You need to call multiple times the API to get all your users from the directory if you have more than 50.
