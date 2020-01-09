@@ -6,13 +6,13 @@ categories: [ Development, AzureAD ]
 tags: [Development, AzureAD, React, ASPNET.CORE]
 featured: false
 ---
-Microsoft is evolving the Azure Active Direcotry (v1.0) endpoints into the new Microsoft identity platform (v2.0). You should definitely give it a try and consider a move to this new platform. This [this article](https://docs.microsoft.com/en-us/azure/active-directory/develop/azure-ad-endpoint-comparison) if you are interested to understand more and identify the main reasons of peforming the switch. 
+Microsoft is evolving the Azure Active Directory (v1.0) endpoints into the new Microsoft identity platform (v2.0). You should give it a try and consider a move to this new platform. [This article](https://docs.microsoft.com/en-us/azure/active-directory/develop/azure-ad-endpoint-comparison) if you are interested to understand more and identify the main reasons for performing the switch.
 
-From a software development perspective you used ADAL (Azure Active Directory Library) to help you getting authenticated against the old Azure Active Directory (v1.0) services. If you want to integrate your application with the Microsoft identity platform (v2.0), you can use MSAL (Microsoft Authentication Library) instead. An overview of MSAL is given [here](https://docs.microsoft.com/en-us/azure/active-directory/develop/msal-overview). 
+From a software development perspective, you used ADAL (Azure Active Directory Library) to help you get authenticated against the old Azure Active Directory (v1.0) services. If you want to integrate your application with the Microsoft identity platform (v2.0), you can use MSAL (Microsoft Authentication Library) instead. An overview of MSAL is given [here](https://docs.microsoft.com/en-us/azure/active-directory/develop/msal-overview). 
 
 ## The scenario
-I wanted to implement both, an ASP.NET Core project to act as an API backend, and a standard CRA React project to act as a UI, but with the convenience of hosting both in a single app project that can be build and published as a single unit. 
-The authentication has to be handled on client-side forcing the user to authenticate once accessing any page. Once authenitcated, I wanted to provide simple user information about the logged-in user using Microsoft Graph.
+I wanted to implement both, an ASP.NET Core project to act as an API backend, and a standard CRA React project to act as a UI, but with the convenience of hosting both in a single app project that can be built and published as a single unit. 
+The authentication has to be handled on the client-side forcing the user to authenticate once accessing any page. Once authenticated, I wanted to provide simple user information about the logged-in user using Microsoft Graph.
 
 You can find the results of this project in [this GitHub](https://github.com/plamber/MSAL-Authenticationsamples/tree/master/MSAL-Authenticationsamples/AAD-React-AspNetCore). I used the existing [React project template with ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/client-side/spa/react?view=aspnetcore-3.1&tabs=visual-studio) as a foundation for my project.
 
@@ -53,7 +53,7 @@ If you want to use your dedicated Azure AD application, follow these basic steps
   - In case you configured a single tenant application, replace *common* in the *authority* value with **youTenantID**
     
 ## Key aspects in the code
-The app is using the [React project template with ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/client-side/spa/react?view=aspnetcore-3.1&tabs=visual-studio) as basis. I just removed the unnecessary *Weather* controllers and added some minor things.
+The app is using the [React project template with ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/client-side/spa/react?view=aspnetcore-3.1&tabs=visual-studio) as a basis. I just removed the unnecessary *Weather* controllers and added some minor things.
 
 ### Install the required client-side libraries
 I used NPM to install the necessary client-side libraries. *msal* is used to get MSAL.JS while *@microsoft/microsoft-graph-client* is used for the Microsoft Graph integration part.
@@ -66,7 +66,7 @@ In *package.json* you should find these entries.
 ```
 
 ### Forcing the authentication in React
-One of my requirements was to force the authentication whenever a user is accessing a page. To implement this, I found it convenient to use the React [Higher-Order Componet pattern](https://reactjs.org/docs/higher-order-components.html) to encapsulate the MSAL.JS authentication logic. The *MsalAuthProvider.js* is responsible for this part. The authentication is handled by the logic below. If a user is not authenticated, authenticate him/her using the Azure AD settings in our config.
+One of my requirements was to force the authentication whenever a user is accessing a page. To implement this, I found it convenient to use the React [Higher-Order Component pattern](https://reactjs.org/docs/higher-order-components.html) to encapsulate the MSAL.JS authentication logic. The *MsalAuthProvider.js* is responsible for this part. The authentication is handled by the logic below. If a user is not authenticated, authenticate him/her using the Azure AD settings in our config.
 
 ``` javascript
 async componentWillMount() {
@@ -146,6 +146,6 @@ if (accessToken) {
 Go and change the *MsalConfig.js* if you want to manipulate the authentication settings for MSAL.JS. You can find the configuration options of MSAL.JS under [this link](https://docs.microsoft.com/en-us/azure/active-directory/develop/msal-js-initializing-client-applications). 
 
 ### Summarizing
-With [this GitHub project](https://github.com/plamber/MSAL-Authenticationsamples/tree/master/MSAL-Authenticationsamples/AAD-React-AspNetCore) I am showing you how to authenticate against Azure AD using React and ASP.NET core. I will definitely improve the current code and provide more samples on that repository. 
+With [this GitHub project](https://github.com/plamber/MSAL-Authenticationsamples/tree/master/MSAL-Authenticationsamples/AAD-React-AspNetCore) I am showing you how to authenticate against Azure AD using React and ASP.NET core. I will improve the current code and provide more samples on that repository. 
 
 Happy coding.
