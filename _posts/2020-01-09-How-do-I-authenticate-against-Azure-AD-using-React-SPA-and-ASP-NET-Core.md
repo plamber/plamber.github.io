@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "How do I authenticate against Azure AD using React, MSAL.JS and ASP.NET Core 3.0"
+title:  "How do I authenticate against Azure AD using React, MSAL.JS and ASP.NET Core 3.0?"
 author: plamber
 categories: [ Development, AzureAD ]
 tags: [Development, AzureAD, React, ASPNET.CORE]
