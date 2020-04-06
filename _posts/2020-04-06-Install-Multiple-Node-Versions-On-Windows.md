@@ -29,12 +29,12 @@ After installing nvm, I have to install the desired Node instances using a Power
 ```
 # installs the node version 10.19.0 in 32 bit
 nvm install 10.19.0 32 
-nvm use 10.19.0
+nvm use 10.19.0 32
 npm install gulp-cli g
 
-# installs the node version 12.16.1 and automatically chooses the achitecture (32bits or 64bits)
-nvm install 12.16.1
-nvm use 12.16.1
+# installs the node version 12.16.1 in 32 bit
+nvm install 12.16.1 32
+nvm use 12.16.1 32
 npm install gulp-cli g
 ```
 
