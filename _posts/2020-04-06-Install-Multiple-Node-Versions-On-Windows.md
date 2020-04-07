@@ -24,12 +24,12 @@ Before installing the latest package, ensure that you cleanup your environment f
 - Uninstall existing npm install location (e.g. "C:\Users\<user>\AppData\Roaming\npm")
 - [Download](https://github.com/coreybutler/nvm/releases) the latest version of nvm for Windows and install it 
 
-After installing nvm, I have to install the desired Node instances using a PowerShell command prompt <b>in an administrative context</b>. I need Node v10.19.0 for SPFx and Node v12.16.1 for Office 365 CLI. Therefore, I executing these commands.
+After installing nvm, I have to install the desired Node instances using a PowerShell command prompt <b>in an administrative context</b>. I need Node v10.0.0 for SPFx and Node v12.16.1 for Office 365 CLI. Therefore, I executing these commands.
 
 ```
-# installs the node version 10.19.0 in 32 bit
-nvm install 10.19.0 32 
-nvm use 10.19.0 32
+# installs the node version 10.0.0 in 32 bit
+nvm install 10.0.0 32 
+nvm use 10.0.0 32
 npm install gulp-cli g
 
 # installs the node version 12.16.1 in 32 bit
