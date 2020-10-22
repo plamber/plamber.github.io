@@ -1,0 +1,38 @@
+I"–<p>I had the requirement to remove a site collection admin assigned to all SharePoint Online site collections with a script. To achieve this goal I was using <a href="https://docs.microsoft.com/en-us/powershell/sharepoint/sharepoint-pnp/sharepoint-pnp-cmdlets?view=sharepoint-ps">Pnp PowerShell</a>. The script was executed by an account having permissions to all SharePoint Online sites.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre>$username = "putYourUserNameHere"
+$password = "putYourPasswordHere"
+$tenant = "putYourTenantHere"
+# alternatively use the loginname. ensure you are going to change the Get-PnpUser filter
+$displayName = "*putTheDisplayNameOfTheUserHere*"
+
+[SecureString]$SecurePass = ConvertTo-SecureString $password -AsPlainText -Force 
+$creds = New-Object System.Management.Automation.PSCredential($username, $SecurePass) 
+
+Connect-PnPOnline "https://$tenant-admin.sharepoint.com" -Credentials $creds
+
+Get-PnPTenantSite | ForEach-Object {
+   $site = $_
+   Write-Host "Processing $($site.Url)..."
+   Connect-PnPOnline $site.Url -Credentials $creds
+   Get-PnPUser | ? Title -like $displayName | Remove-PnPSiteCollectionAdmin
+}
+</pre></td></tr></tbody></table></code></pre></div></div>
+:ET

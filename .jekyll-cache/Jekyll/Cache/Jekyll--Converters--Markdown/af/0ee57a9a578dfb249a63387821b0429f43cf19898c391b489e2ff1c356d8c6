@@ -1,0 +1,216 @@
+I"#4<p>Microsoft is evolving the Azure Active Directory (v1.0) endpoints into the new Microsoft identity platform (v2.0). You should give it a try and consider a move to this new platform. <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/azure-ad-endpoint-comparison">This article</a> if you are interested to understand more and identify the main reasons for performing the switch.</p>
+
+<p>From a software development perspective, you used ADAL (Azure Active Directory Library) to help you get authenticated against the old Azure Active Directory (v1.0) services. If you want to integrate your application with the Microsoft identity platform (v2.0), you can use MSAL (Microsoft Authentication Library) instead. An overview of MSAL is given <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/msal-overview">here</a>.</p>
+
+<h2 id="the-scenario">The scenario</h2>
+<p>I wanted to implement both, an ASP.NET Core project to act as an API backend, and a standard CRA React project to act as a UI, but with the convenience of hosting both in a single app project that can be built and published as a single unit. 
+The authentication has to be handled on the client-side forcing the user to authenticate once accessing any page. Once authenticated, I wanted to provide simple user information about the logged-in user using Microsoft Graph.</p>
+
+<p>You can find the results of this project in <a href="https://github.com/plamber/MSAL-Authenticationsamples/tree/master/MSAL-Authenticationsamples/AAD-React-AspNetCore">this GitHub</a>. I used the existing <a href="https://docs.microsoft.com/en-us/aspnet/core/client-side/spa/react?view=aspnetcore-3.1&amp;tabs=visual-studio">React project template with ASP.NET Core</a> as a foundation for my project.</p>
+
+<h2 id="what-is-the-website-doing">What is the website doing?</h2>
+<p>The users are immediately forced to authenticate themselves once accessing the website. MSAL.JS is used to handle the whole authentication flow. For this, an Azure AD application was registered on the target tenant.</p>
+
+<p>Once authenticated, the user sees basic information about him/her on the upper-right corner. This information is coming from the authentication token provided by Azure AD. If you just want to authenticate the user using Azure AD, we are already done.</p>
+
+<p>I also added a section that shows how to get the basic information about the user using Microsoft Graph. This is handled by the page <em>Get Graph data</em> and the Microsoft Graph JavaScript libraries included in the project.</p>
+
+<p><img src="../assets/images/2020-01-09-09-30-33.png" alt="" /></p>
+
+<p>At this stage, there is no further interaction with ASP.NET Core. I am not consuming any secured API on our back-end. This will be handled in a future post.</p>
+
+<h2 id="how-do-i-get-started">How do I get started?</h2>
+<ul>
+  <li>fork/clone <a href="https://github.com/plamber/MSAL-Authenticationsamples/">this GitHub repository</a></li>
+  <li>open the project under MSAL-Authenticationsamples/AAD-React-AspNetCore</li>
+</ul>
+
+<p>If you just want to test it without additional hassle, just run the project. I already configured a multi-tenant application in my test tenant that allows you to authenticate against Azure AD.</p>
+
+<p>Follow the steps below if you want to have your dedicated Azure AD application.</p>
+
+<h3 id="i-want-to-use-my-dedicated-azure-ad-application">I want to use my dedicated Azure AD application</h3>
+<p>If you want to use your dedicated Azure AD application, follow these basic steps. You need to ensure that you are properly configuring a new application in Azure AD. Once configured, you need to change the configuration of the application in the code.</p>
+
+<h4 id="register-your-app">Register your app</h4>
+<ul>
+  <li>Go to the <a href="https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps">App Registration in Azure AD</a></li>
+  <li>Press <em>New registration</em></li>
+  <li>Specify a name and choose the desired account types (Single tenant, Multitenant) and then press <em>Register</em></li>
+  <li>Copy the <em>Application (client) ID</em> (<strong>yourClientID</strong>) and <em>Directory (tenant) ID</em> (<strong>yourTenantID</strong>)</li>
+  <li>Go to <em>Authentication</em>
+    <ul>
+      <li>Under <em>Redirect URIs</em> create two entries: https://localhost:44321/signin-oidc, https://localhost:44366/</li>
+      <li>Under <em>Implicit grant</em> select <em>Access tokens</em> and <em>ID tokens</em></li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="change-the-configuration-in-visual-studio-to-use-your-created-application">Change the configuration in Visual Studio to use your created application</h4>
+<ul>
+  <li>Go under <em>ClientApp</em> -&gt; <em>src</em> -&gt; <em>msal</em> -&gt; <em>MsalConfig.js</em>
+    <ul>
+      <li>Replace the <em>clientId</em> value with <strong>yourClientID</strong></li>
+      <li>In case you configured a single tenant application, replace <em>common</em> in the <em>authority</em> value with <strong>youTenantID</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="key-aspects-in-the-code">Key aspects in the code</h2>
+<p>The app is using the <a href="https://docs.microsoft.com/en-us/aspnet/core/client-side/spa/react?view=aspnetcore-3.1&amp;tabs=visual-studio">React project template with ASP.NET Core</a> as a basis. I just removed the unnecessary <em>Weather</em> controllers and added some minor things.</p>
+
+<h3 id="install-the-required-client-side-libraries">Install the required client-side libraries</h3>
+<p>I used NPM to install the necessary client-side libraries. <em>msal</em> is used to get MSAL.JS while <em>@microsoft/microsoft-graph-client</em> is used for the Microsoft Graph integration part.</p>
+
+<p>In <em>package.json</em> you should find these entries.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>"@microsoft/microsoft-graph-client": "^2.0.0",
+"msal": "^1.2.0",
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="forcing-the-authentication-in-react">Forcing the authentication in React</h3>
+<p>One of my requirements was to force the authentication whenever a user is accessing a page. To implement this, I found it convenient to use the React <a href="https://reactjs.org/docs/higher-order-components.html">Higher-Order Component pattern</a> to encapsulate the MSAL.JS authentication logic. The <em>MsalAuthProvider.js</em> is responsible for this part. The authentication is handled by the logic below. If a user is not authenticated, authenticate him/her using the Azure AD settings in our config.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+</pre></td><td class="rouge-code"><pre><span class="k">async</span> <span class="nx">componentWillMount</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">msalAuth</span><span class="p">.</span><span class="nx">handleRedirectCallback</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">userAccount</span> <span class="o">=</span> <span class="nx">msalAuth</span><span class="p">.</span><span class="nx">getAccount</span><span class="p">();</span>
+
+        <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+            <span class="na">isAuthenticated</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="na">user</span><span class="p">:</span> <span class="nx">userAccount</span>
+        <span class="p">});</span>
+    <span class="p">},</span> <span class="p">(</span><span class="nx">authErr</span><span class="p">,</span> <span class="nx">accountState</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>  <span class="c1">// on fail</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">authErr</span><span class="p">);</span>
+
+        <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+            <span class="na">hasError</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="na">errorMessage</span><span class="p">:</span> <span class="nx">authErr</span><span class="p">.</span><span class="nx">errorMessage</span>
+        <span class="p">});</span>
+    <span class="p">});</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">msalAuth</span><span class="p">.</span><span class="nx">isCallback</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">hash</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+            <span class="na">auth</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">renewIframe</span><span class="p">:</span> <span class="kc">true</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">let</span> <span class="nx">userAccount</span> <span class="o">=</span> <span class="nx">msalAuth</span><span class="p">.</span><span class="nx">getAccount</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">userAccount</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">msalAuth</span><span class="p">.</span><span class="nx">loginRedirect</span><span class="p">({});</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+            <span class="na">isAuthenticated</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="na">user</span><span class="p">:</span> <span class="nx">userAccount</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>This function is used in the <em>App.js</em> file to wire-up the authentication and associate it with the main React app using the High-Order Component pattern.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre>class RootApp extends Component {
+    render() {
+        return (
+            &lt;Layout {...this.props} &gt;
+                &lt;Route exact path='/' component={Home} /&gt;
+                &lt;Route exact path='/graph-data' component={GraphData} /&gt;
+            &lt;/Layout&gt;
+        );
+    }
+}
+export const App = withAuth(RootApp);
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>The <em>GraphData.js</em> file is handling the creation of the Graph client and the retrieval of the graph information of the user. You can find under <em>GraphService.js</em> the part of the code which is requesting a new token for the Graph request.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre>const accessTokenRequest = {
+    scopes: ["user.read"]
+}
+var accessToken = null;
+try {
+    accessToken = await msalAuth.acquireTokenSilent(accessTokenRequest);
+}
+catch (error) {
+    console.log("AquireTokenSilent failure");
+    accessToken = await msalAuth.acquireTokenPopup(accessTokenRequest);
+}
+
+if (accessToken) {
+    var user = await getUserDetails(accessToken);
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Go and change the <em>MsalConfig.js</em> if you want to manipulate the authentication settings for MSAL.JS. You can find the configuration options of MSAL.JS under <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/msal-js-initializing-client-applications">this link</a>.</p>
+
+<h3 id="summarizing">Summarizing</h3>
+<p>With <a href="https://github.com/plamber/MSAL-Authenticationsamples/tree/master/MSAL-Authenticationsamples/AAD-React-AspNetCore">this GitHub project</a> I am showing you how to authenticate against Azure AD using React and ASP.NET core. I will improve the current code and provide more samples on that repository.</p>
+
+<p>Happy coding.</p>
+:ET

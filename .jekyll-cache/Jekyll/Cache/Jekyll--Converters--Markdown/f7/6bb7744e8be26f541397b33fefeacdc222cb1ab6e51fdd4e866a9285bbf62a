@@ -1,0 +1,26 @@
+I"u<p>It is common practice to debug a SharePoint Framework solution using <a href="https://docs.microsoft.com/en-us/sharepoint/dev/spfx/debug-modern-pages">Modern pages</a>.</p>
+
+<p>I recently developed some SPFx solutions using a slightly different development setup as usual. Instead of using Edge or Chrome for debugging, I used the latest version of Mozilla Firefox.</p>
+
+<p>Once I started my debugging session, I received a well-known error message after hitting the <strong>Load debug scripts</strong> operation.</p>
+
+<p><img src="../assets/images/2020-05-05-20-31-35.png" alt="" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>Error loading debug manifest
+
+Error loading debug script. Ensure the server is running and the "debugManifestFile" parameter URL is correct.
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="../assets/images/2020-05-05-20-31-14.png" alt="" /></p>
+
+<p>Usually, you get this error message if you do not serve your solution using the <strong>gulp serve –nobrowser</strong> command or if you forgot to trust the self-signed certificate using the <strong>gulp trust-dev-cert</strong> command. In my case, I was sure that both things happened.</p>
+
+<p>After a while, I figured out that Mozilla Firefox was ignoring the trust performed by the <strong>gulp trust-dev-cert</strong> command. I had to navigate to the served URL <em>https://localhost:4321</em> directly using the browser.</p>
+
+<p><img src="../assets/images/2020-05-05-20-31-52.png" alt="" /></p>
+
+<p>From there, I manually accepted the risk and continued the navigation. Mozilla Firefox started trusting my self-signed certificate. Afterward, my SPFx solutions worked fine also with Mozilla Firefox.</p>
+:ET

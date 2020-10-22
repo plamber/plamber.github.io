@@ -1,0 +1,34 @@
+I"<p>Microsoft enabled for Office 365 Video admins and Office 365 global administrators the possibility to migrate all videos to Microsoft Stream since Sep 10, 2019. The process is described in detail <a href="https://docs.microsoft.com/en-us/stream/migrate-from-office-365">here</a>.</p>
+
+<p>An Office 365 Video admin and Office 365 global administrator will see the banner in Office 365 Video allowing them to trigger the migration process.</p>
+
+<p><img src="../../assets/images/2019-09-18-13-29-50.png" alt="" /></p>
+
+<p>Unfortunately, some of you might receive an access denied error message.</p>
+
+<div class="alert warning">
+   "This may not be for you. It looks you don't have permissions to this content".
+</div>
+
+<p><img src="../../assets/images/2019-09-18-13-30-52.png" alt="" /></p>
+
+<p>The problem is that your account has not been explicitly assigned as Office 365 Video and Microsoft Stream administrator.</p>
+
+<div class="alert warning">
+    You also have to assign explicit permissions if you are global administrator.
+</div>
+
+<h3 id="the-solution">The solution</h3>
+
+<p>If you want to fix this, simply assign your account explicit permissions on both platforms. Your Office 365 Video and Stream administrators should be able to do this or a global administrator. I know, you have to assign your account explicit permissions on both platforms.</p>
+<ul>
+  <li>Go to your Office 365 Video Portal Settings (https://YourTenantName.sharepoint.com/portals/hub/_layouts/15/videoportalsettings.aspx) and assign your account permissions</li>
+  <li>Go to your <a href="https://web.microsoftstream.com/admin?view=Administrators">Microsoft Stream Admin Portal</a> and assign your account explicit permissions</li>
+  <li>Logoff from Office 365 and Login again</li>
+  <li>Go to your Office 365 Video Portal https://YourTenantName.sharepoint.com/portals/hub/ and start again the migration process</li>
+</ul>
+
+<p>The process will start successfully by showing you the screen that follows.</p>
+
+<p><img src="../../assets/images/2019-09-18-13-34-00.png" alt="" /></p>
+:ET

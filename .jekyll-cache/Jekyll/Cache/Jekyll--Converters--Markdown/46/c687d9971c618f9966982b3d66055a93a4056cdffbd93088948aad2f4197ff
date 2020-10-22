@@ -1,0 +1,49 @@
+I"�<p>A SharePoint Online administrator can change the SharePoint Online <a href="https://docs.microsoft.com/en-us/sharepoint/change-site-address">site address</a>. The interesting part of this feature is that in many situations Microsoft already considered how to limit the impact of such a change. Nevertheless, you should have a look into the <a href="https://docs.microsoft.com/en-us/sharepoint/change-site-address">effects of changing a site address</a> before performing any operation.</p>
+
+<p>I created a sample script that shows you how to use PowerShell to perform a site change.</p>
+
+<script src="https://gist.github.com/plamber/111858beb76943a70a7588bee598460b.js"></script>
+
+<p>From the script, you can see that the operations are triggered by using the <a href="https://docs.microsoft.com/en-us/powershell/module/sharepoint-online/start-spositerename?view=sharepoint-ps">Start-SPOSiteRename</a> command. This will queue a rename job that will be executed in the background. The command <a href="https://docs.microsoft.com/en-us/powershell/module/sharepoint-online/Get-SPOSiteRenameState?view=sharepoint-ps">Get-SPOSiteRenameState</a> will return you the current status of the job. Once the job is marked as completed, you will have two sites in your tenant. You will have the site with the new URL and contents and a new site using the Template <strong>Redirect#0</strong>. This site will ensure that all requests pointing to the old URL will be redirected to the new URL. This site also ensures that nobody is able to request a new site with the old URL.</p>
+
+<p>In case you want to free up the old name, delete the site collection that has been created for redirection.</p>
+
+<h2 id="install-the-sharepoint-online-management-module-if-required">Install the SharePoint Online Management Module if required</h2>
+<h2 id="install-module--name-microsoftonlinesharepointpowershell">Install-Module -Name Microsoft.Online.SharePoint.PowerShell</h2>
+<h2 id="more-info-under-httpswwwnuboeuconnect-to-sharepoint-online-using-powershell">More info under https://www.nubo.eu/Connect-to-SharePoint-Online-using-PowerShell/</h2>
+<h2 id="important-execute-these-steps-one-by-one">Important: Execute these steps one by one</h2>
+
+<h2 id="parameters-start">parameters start</h2>
+<p>$tenant = “adidasgroup”
+$firstSiteAlias = “WorkingProductLed”
+$firstSiteNewAlias = “WorkingProductLedFuture”
+$secondSiteAlias = “ProductTeamsPlaybook”</p>
+<h2 id="parameters-end">parameters end</h2>
+
+<h1 id="connect-to-spo-with-admin-accounts">Connect to SPO with admin accounts</h1>
+<p>Connect-SPOService “https://$tenant-admin.sharepoint.com”
+$firstSiteUrl = “https://$tenant.sharepoint.com/sites/$firstSiteAlias”
+$firstSiteNewAliasUrl = “https://$tenant.sharepoint.com/sites/$firstSiteNewAlias”
+$secondSiteUrl = “https://$tenant.sharepoint.com/sites/$secondSiteAlias”</p>
+
+<h1 id="the-original-site-needs-to-be-moved-to-a-different-place">The original site needs to be moved to a different place</h1>
+<p>Start-SPOSiteRename -Identity $firstSiteUrl -NewSiteUrl $firstSiteNewAliasUrl -Confirm:$false</p>
+<h1 id="the-process-might-take-a-while-depending-the-size-of-the-site-you-can-check-the-status-using-this-command">The process might take a while depending the size of the site. You can check the status using this command</h1>
+<p>Get-SPOSiteRenameState -Identity $firstSiteUrl</p>
+
+<h1 id="once-the-process-is-completed-perform-these-steps">Once the process is completed, perform these steps</h1>
+<h1 id="the-previous-move-operation-created-a-redirectsite0-site-on-our-desired-spot-we-have-to-delete-first">The previous move operation created a REDIRECTSITE#0 site on our desired spot. We have to delete first</h1>
+<p>$site = Get-SPOSite $firstSiteUrl
+if ($site.Template -eq “REDIRECTSITE#0”) {
+    $site | Remove-SPOSite -Confirm:$false
+}</p>
+
+<h1 id="we-removed-the-redirectsite0-on-our-desired-url-now-go-and-perform-a-rename-of-the-sharepoint-site-that-needs-the-new-url">We removed the REDIRECTSITE#0 on our desired URL. Now go and perform a rename of the SharePoint site that needs the new URL</h1>
+<p>Start-SPOSiteRename -Identity $secondSiteUrl -NewSiteUrl $firstSiteUrl -Confirm:$false</p>
+<h1 id="the-process-might-take-a-while-depending-the-size-of-the-site-you-can-check-the-status-using-this-command-1">The process might take a while depending the size of the site. You can check the status using this command</h1>
+<p>Get-SPOSiteRenameState -Identity $secondSiteUrl</p>
+
+<h1 id="the-second-site-was-moved-to-the-new-url-this-rename-operation-created-a-redirect-template-site-on-the-old-url">The second site was moved to the new url. This rename operation created a redirect template site on the old URL</h1>
+<p>$site = Get-SPOSite $secondSiteUrl
+$site.Template</p>
+:ET

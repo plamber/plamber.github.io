@@ -1,0 +1,122 @@
+I"á<blockquote>
+  <p>You can download the source code for this series directly from my <a href="https://github.com/plamber/powerplattformcustomconnectors/">GitHub repository</a>. The name of this sample project is <em>02. CustomConnectorSwagger</em>.</p>
+</blockquote>
+
+<p>While in the previous posts you learned how to define a custom connector from scratch, this post will show you how you can leverage an OpenAPI definition coming from your ASP.NET Core REST application to create a custom connector.</p>
+
+<p>The OpenAPI Specification (formerly Swagger Specification) is an API description format for REST APIs. In this file, you can describe your entire API, including the endpoints, operations, input-output for each operation, and authentication methods. You can find more information about this specification <a href="https://swagger.io/docs/specification/about/">here</a>.</p>
+
+<p>When creating a new custom connector for Power Automation, you can upload an OpenAPI specification of your endpoints to speed-up the creation process for your flow.</p>
+
+<h2 id="how-to-get-started">How to get started?</h2>
+<p>I created a project on GitHub that can be used to explore these capabilities and benefits. This project shows you how you can describe each action with OpenAPI keywords using Swashbuckle. To get everything up-and-running, follow these steps:</p>
+<ul>
+  <li>Get the project <em>02. CustomConnectorWithSwagger</em> from the <a href="https://github.com/plamber/powerplattformcustomconnectors/">GitHub repository</a>.</li>
+  <li>Publish the <em>02. CustomConnectorWithSwagger</em> project to Azure AD or some other hosting provider. Find <a href="https://docs.microsoft.com/en-us/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019">here</a> the guide how Azure Web Application publishing works.</li>
+  <li>Once we published the project for the first time, we have to get the host URL of the web application. You can test if the API returns some values by calling the address <em>[PutYourHostAddressHere]/api/products</em> in your browser. You should get back some results. If not, ensure that you got the correct host and that you published your project.</li>
+  <li>Change the <em>appsettings.json</em> file and add the <em>host</em> parameter. You should put the host address of the published web application. <strong>Publish</strong> the web application again after you performed this change.</li>
+</ul>
+
+<h2 id="let-us-explore-the-project">Let us explore the project</h2>
+<p>The generation of the Swagger file is performed by the Swashbuckle libraries. The NuGet packages used for the ASP.NET Core Web Application are:</p>
+<ul>
+  <li>Swashbuckle.AspNetCore: Swagger tools for documenting APIs built on ASP.NET Core</li>
+  <li>Swashbuckle.AspNetCore.Annotations: Provides custom attributes that can be applied to controllers, actions and models to enrich the generated Swagger</li>
+</ul>
+
+<h4 id="enable-the-swashbuckle-component">Enable the Swashbuckle component</h4>
+<p>Adding the NuGet packages is not enough. We have to enable Swashbuckle using dependency injection in our <em>Startup.cs</em> class. The lines of code below perform this activity.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre>public void ConfigureServices(IServiceCollection services)
+{
+    services.Configure&lt;SwaggerSettings&gt;(Configuration.GetSection("SwaggerSettings"));
+    ...
+
+    services.AddSwaggerGen(c =&gt;
+    {
+        c.SwaggerDoc("v1", new OpenApiInfo { Title = _swaggerApiName, Version = "v1" });
+        c.DocumentFilter&lt;BasePathDocumentFilter&gt;();
+        c.EnableAnnotations();
+    });
+}
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>The lines getting the <em>SwaggerSettings</em> and adding the <em>DocumentFilter</em> are just required to fill the required host value in the Swagger file. This host value is used by the custom connector to specify the host of the REST service. You can configure the value of the host under <em>appsettings.json</em>.</p>
+
+<p>The next lines of code are finalizing the configuration for our Swagger file generation.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre>public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+    app.UseSwagger(c =&gt;
+    {
+        c.SerializeAsV2 = true;
+    });
+    app.UseSwaggerUI(c =&gt;
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", _swaggerApiName);
+    });
+
+    ...
+}
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>These will tell Swashbuckle to generate a SwaggerUI allowing you to browse the documentation and interact with the app. You can reach it over the URL <em>[PutYourHostAddressHere]/swagger</em>.</p>
+
+<p>The Swagger file is generated under <em>[PutYourHostAddressHere]/v1/swagger.json</em>. Note that we are outputting a Swagger v2 file. Custom connectors do not support other Swagger definitions right now even if the current version is v3. Microsoft is going to provide support for higher versions in the future.</p>
+
+<h4 id="optional-add-descriptions-to-your-endpoints">Optional: add descriptions to your endpoints</h4>
+<p>If you open the <em>ProductsControllercs</em> you will see some attribute definitions that are used to add the descriptions for the actions used in your custom connector. If you do not do this, you have to specify them manually in the <em>Define</em> section of the custom connector creation.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>[HttpGet(Name = "GetProducts")]
+[SwaggerOperation(Summary = "Get products", Description = "Return all products", OperationId = "GetProducts")]
+public ActionResult&lt;IEnumerable&lt;Product&gt;&gt; Get()
+{
+    return _repository.Get();
+}
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="lets-create-the-custom-connector-using-the-openapi-definition">Letâ€™s create the custom connector using the OpenAPI definition</h2>
+<p>You can download the Swagger file from <em>[YourAzureHostAddress]/swagger/v1/swagger.json</em>. This file is required during the custom connector creation.</p>
+
+<p>Login to your Power Automation interface and choose the <em>Custom Connectors</em> option in the menu.</p>
+
+<p><img src="../../assets/images/2019-10-24-06-33-45.png" alt="" /></p>
+
+<p>You will be redirected to the custom connector overview page managed by you. The creation of a new custom connector is performed using the <em>New custom connector</em> option. Chose the <em>New custom connector</em> -&gt; <em>Import an OpenAPI file</em>, specify the name for your connector and the Swagger file you downloaded before.</p>
+
+<p>You will be redirected to the next interface. All important values are already filled out from the swagger file.</p>
+
+<p><img src="../../assets/images/2019-10-25-12-33-15.png" alt="" /></p>
+
+<p>You can further change the definition if required and the save the connector. The rest works the same as described in the <a href="/Create-Custom-Connector-That-Accesses-An-Anonymous-REST-API">previous post</a>.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>In this post we saw that you can leverage the OpenAPI definition of your REST APIs to create a custom connector in Power Automation. This approach will not only improve the documentation for your endpoints, it also speeds up the creation of the custom connectors.</p>
+:ET

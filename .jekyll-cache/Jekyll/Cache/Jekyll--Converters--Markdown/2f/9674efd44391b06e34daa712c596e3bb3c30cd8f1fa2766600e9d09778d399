@@ -1,0 +1,14 @@
+I"ã<p>Data consistency is key during the migration of contents between two SharePoint Online sites. You already agreed on the final migration slot with your stakeholders and you want to be sure that nobody is going to do changes after your migration without messing around with the SharePoint permissions?</p>
+
+<p>The <a href="https://www.microsoft.com/en-us/download/details.aspx?id=35588">SharePoint Online Management Shell</a> allows you to configure the <em>LockState</em> for your site. After migrations you want to set the site read-only without changing the site structure or SharePoint permissions at all. You can do this with following snippet.</p>
+
+<script src="https://gist.github.com/plamber/8293cef041907583b6a845c735ce99fd.js"></script>
+
+<p>Once the <em>LockState</em> is ste to <em>ReadOnly</em>, a message will appear on the site stating that the site is under maintenance. In my case, this was not working properly.</p>
+
+<p><img src="../../assets/images/2019-08-26-17-30-34.png" alt="" /></p>
+
+<p>You can also block the access to the site completely. For this scenario, you could use the <em>NoAccess</em> parameter instead of the <em>ReadOnly</em> parameter in the script above. For these types of sites, you can specify a global redirection to a dedicated page that you can specify with the <em>NoAccessRedirectUrl</em> parameter in the <em>Set-SPOtenant</em> command.</p>
+
+<p>In case you have to rollback the changes, simply execute the above script with the <em>Unlock</em> parameter.</p>
+:ET

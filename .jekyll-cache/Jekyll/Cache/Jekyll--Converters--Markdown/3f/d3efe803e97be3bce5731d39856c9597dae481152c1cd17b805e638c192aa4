@@ -1,0 +1,2 @@
+I" <p>When working with Node.js you might encounter situations where you need multiple versions of Node.js on the same machine. In my case, I want to create <a href="https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment">SPFx components for SharePoint Online</a> and on the same machine create components for the <a href="https://github.com/pnp/office365-cli">Office 365 CLI</a>.</p>
+:ET

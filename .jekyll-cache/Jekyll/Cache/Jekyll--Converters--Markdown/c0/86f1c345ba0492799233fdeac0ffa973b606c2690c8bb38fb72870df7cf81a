@@ -1,0 +1,9 @@
+I"Z<p>I created a script using the <a href="https://www.nubo.eu/Connect-to-SharePoint-Online-using-PowerShell/">SharePoint Online Management Shell</a> to create a modern site without an Office 365 Group associated with it.</p>
+
+<p>The script below is collecting some basic information about the site.</p>
+
+<p>It creates a modern site without Office 365 Group by using the template value STS#3. The last command is going to set the external sharing with external identities without an anonymous link option.</p>
+
+<script src="https://gist.github.com/plamber/19eaad16742fa39567966ee86153c554.js"></script>
+
+:ET

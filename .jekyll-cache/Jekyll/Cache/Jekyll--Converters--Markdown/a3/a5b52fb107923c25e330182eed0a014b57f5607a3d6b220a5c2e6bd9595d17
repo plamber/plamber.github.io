@@ -1,0 +1,2 @@
+I"Þ<p>Azure AD allows to configure custom token lifetime policies for the access and refresh tokens. In your tenant you might have the token lifetime policy set to 1 hour for access tokens and 90 days for refresh tokens.</p>
+:ET

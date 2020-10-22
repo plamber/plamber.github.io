@@ -1,0 +1,39 @@
+I"<p>The <a href="https://github.com/SharePoint/PnP-PowerShell">PNP-PowerShell</a> is a library of PowerShell commands that allows you to perform complex provisioning and artifact management actions towards SharePoint. I see these commands as a valuable extension to the existing <a href="/Connect-to-SharePoint-Online-using-PowerShell">SharePoint Online Management Shell</a>.</p>
+
+<p>Useful for the daily business and batch operations on multiple SharePoint Online sites or Office 365 Groups. If you want to use it you need to have the following prerequisites:</p>
+
+<ul>
+  <li>Have the SharePoint Online or global administrator role on your tenant</li>
+  <li>Install the PnP-PowerShell module</li>
+</ul>
+
+<h4 id="how-do-i-install-the-pnp-powershell-module">How do I install the PnP-PowerShell module?</h4>
+<p>If you have the latest PowerShell version installed, you can perform the installation procedure by using the <em>Install-Module</em> commandlet.</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="nf">Install-Module</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="nx">SharePointPnPPowerShellOnline</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>You can validate the installation by running the <em>Get-Module</em> command. It will return all installed PNP-PowerShell versions on your machine.</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="nf">Get-Module</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="nx">SharePointPnPPowerShellOnline</span><span class="w"> </span><span class="nt">-ListAvailable</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Select</span><span class="w"> </span><span class="nx">Name</span><span class="p">,</span><span class="nx">Version</span><span class="w"> 
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="how-do-i-update-the-pnp-powershell-module">How do I update the PNP-PowerShell Module?</h4>
+<p>You can update the PowerShell module by using the Update-Module commandlet.</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="nf">Update-Module</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="nx">SharePointPnPPowerShellOnline</span><span class="w"> 
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="how-do-i-uninstall-this-module">How do I uninstall this module?</h4>
+<p>The module can be uninstalled by using the <em>Uninstall-Module</em> command. It will uninstall the latest version of the module on your machine.</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="nf">Uninstall-Module</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="nx">SharePointPnPPowerShellOnline</span><span class="w"> 
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="how-do-i-connect-to-sharepoint-online">How do I connect to SharePoint Online?</h4>
+<p>Before running any command against Office 365 assets, you have to authenticate yourself using the <em>Connect-PnPOnline</em> command. You can find a description of this command <a href="https://docs.microsoft.com/en-us/powershell/module/sharepoint-pnp/connect-pnponline?view=sharepoint-ps">here</a>.</p>
+:ET

@@ -1,0 +1,18 @@
+I"�<p>I was looking for a way to change the display language set in a Microsoft Teams Client on a Windows machine.
+<img src="../assets/images/2020-10-22-14-39-20.png" alt="" /></p>
+
+<p>At the end I found out that you have to perform following operations:</p>
+<ul>
+  <li>Close the Teams client</li>
+  <li>Remove two files in your %AppData% folder</li>
+  <li>Get the Teams client settings stored in your %AppData% and manipulate the “currentWebLanguage” property</li>
+  <li>Overwrite the Teams client settings</li>
+</ul>
+
+<p>Afterwards, you simply need to start the Teams Client again.</p>
+
+<p>You can find the sample script below.</p>
+
+<script src="https://gist.github.com/plamber/c78f88d7a656268dc6305e98c3aeaf0e.js"></script>
+
+:ET
