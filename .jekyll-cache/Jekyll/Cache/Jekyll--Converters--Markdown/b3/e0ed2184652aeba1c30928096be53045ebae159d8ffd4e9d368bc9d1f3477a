@@ -1,4 +1,0 @@
-I"Ã<p>Users with a valid SharePoint Online license are eligible to get a dedicated OneDrive for Business site to store their contents. Just like a cloud-based personal hard drive. This OneDrive site will store all contents synchronized with the OneDrive for Business client or stored through other means to the OneDrive site.</p>
-
-<p>At some point in time, the user might leave the company. Typically, such an event triggers the deletion of the user account in Office 365 either through a Microsoft 365 administrator or by the Active Directory synchronization process. After this event, the OneDrive for Business cleanup process kicks in for this user. It generally consists of following high-level steps:</p>
-:ET

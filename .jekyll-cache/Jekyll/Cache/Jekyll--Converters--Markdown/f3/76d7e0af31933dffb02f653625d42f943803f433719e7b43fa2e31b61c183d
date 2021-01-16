@@ -1,2 +1,0 @@
-I"ú<p>Yammer provides good APIs to access and interact with a Yammer network. You can get an overview of the access possibilities by opening the <a href="https://developer.microsoft.com/en-us/yammer">Yammer developer center</a>. The API we are going to use is the Yammer REST API. In this blog post I am going to describe the steps necessary to perform a REST API operation through PowerShell as an administrator. I am going to create more posts to describe other activities through REST in future posts.</p>
-:ET

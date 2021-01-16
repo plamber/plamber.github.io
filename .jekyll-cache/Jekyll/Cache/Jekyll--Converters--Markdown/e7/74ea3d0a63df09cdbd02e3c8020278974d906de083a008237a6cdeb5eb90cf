@@ -1,2 +1,0 @@
-I"(<p>The Yammer REST Api allows you to return users through the interface described <a href="https://developer.yammer.com/docs/">here</a>. A call to that API returns a batch of 50 users. You need to call multiple times the API to get all your users from the directory if you have more than 50.</p>
-:ET

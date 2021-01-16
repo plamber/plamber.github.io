@@ -1,2 +1,0 @@
-I"‰<p>I had the requirement to remove a site collection admin assigned to all SharePoint Online site collections with a script. To achieve this goal I was using <a href="https://docs.microsoft.com/en-us/powershell/sharepoint/sharepoint-pnp/sharepoint-pnp-cmdlets?view=sharepoint-ps">Pnp PowerShell</a>. The script was executed by an account having permissions to all SharePoint Online sites.</p>
-:ET

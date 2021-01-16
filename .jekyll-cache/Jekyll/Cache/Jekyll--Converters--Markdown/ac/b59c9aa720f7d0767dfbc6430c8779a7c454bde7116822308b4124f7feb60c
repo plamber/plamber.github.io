@@ -1,2 +1,0 @@
-I"õ<p>You can delete a message through API as described <a href="https://developer.yammer.com/docs/messagesid">here</a>. The snippet below shows how you can do it through PowerShell. You simply need a bearer token and the message id to delete.</p>
-:ET
