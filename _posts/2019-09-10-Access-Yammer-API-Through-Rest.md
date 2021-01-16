@@ -26,8 +26,6 @@ Generate the developer token as a verified admin and use this token as *bearer t
 ### Write the code
 With a generated token it is no more difficult to perform operations with the Rest API. The next code snippet returns the Yammer message IDs using the API endpoint described [here](https://developer.yammer.com/docs/messagesjson). The next snipped is an example that we are going to use for future posts.
 
-<div class="alert">
-    Always consider the <a href="https://developer.yammer.com/docs/rest-api-rate-limits">REST API and Rate Limits</a> when accessing a Yammer network. 
-</div>
+> Always consider the <a href="https://developer.yammer.com/docs/rest-api-rate-limits">REST API and Rate Limits</a> when accessing a Yammer network. 
 
 <script src="https://gist.github.com/plamber/7186fad364fb671b7d6ebe06347ef68c.js?file=getmessages.ps1"></script>

@@ -1,3 +1,0 @@
-I"<p>Our tenant uses Office 365 Unified Groups and their expiration policies that you can configure at tenant level <a href="https://portal.azure.com/#blade/Microsoft_AAD_IAM/GroupsManagementMenuBlade/Lifecycle">under this link</a>.
-We configured it to expire after a specific period. Renewal notifications are emailed to group owners 30 days, 15 days, and one day before group expiration. If a group is not renewed, it is deleted along with its associated content from sources such as Outlook, SharePoint, Teams, and PowerBI.</p>
-:ET

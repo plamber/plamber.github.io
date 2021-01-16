@@ -1,18 +1,16 @@
 # Site
 name: "Patrick Lamber"
 title: "Random thoughts about productivity software."
-description: "IT Geek focusing on Microsoft 365 productivity solutions."
+description: "Microsoft Office Development MVP"
 logo: 'assets/images/logo.svg'
 baseurl: 
 google_analytics: 'UA-85617783-1'
 disqus: 'nubo'
 follow-twitter: 'http://www.twitter.com/patricklamber'
-follow-instagram: 'http://www.instagram.com/lambersports'
 follow-facebook: 'https://www.facebook.com/patrick.lamber'
 follow-linkedin: 'https://www.linkedin.com/in/plamber/'
 follow-github: 'https://github.com/plamber'
 mailchimp-list: 
-#'https://nubo.us3.list-manage.com/subscribe?u=6c85dfdd00be275ce46cdfa5c&id=b2f4f20705'
 include: ["_pages"]
 permalink: /:title/
 show_drafts: false
@@ -26,7 +24,7 @@ authors:
     email: patrick@nubo.eu
     web: http://www.nubo.eu
     twitter: https://twitter.com/patricklamber
-    description: "IT Geek focusing on Microsoft collaboration software."
+    description: "Microsoft Office Development MVP"
 
 # Plugins
 plugins:

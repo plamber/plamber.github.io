@@ -9,13 +9,9 @@ series: YammerRestApi
 ---
 The Yammer REST API is well documented [here](https://developer.yammer.com/docs/). On the other hand, you might miss some documentation regarding some endpoints on that page. For example, there is no notion about how to interact with Yammer Groups. Fortunately, with a little bit of network tracing and by following the naming convention of the other endpoints, you might be able to identify how to interact with groups quite easily. This post summarizes how to access the groups endpoint.
 
-<div class="alert success">
-    You can generate the baerer token (access token) as described in <a href="/2019-09-01-Access-Yammer-API-Through-Rest">this</a> post. 
-</div>
+> You can generate the baerer token (access token) as described in <a href="/Access-Yammer-API-Through-Rest">this</a> post. 
 
-<div class="alert">
-    Always consider the <a href="https://developer.yammer.com/docs/rest-api-rate-limits">REST API and Rate Limits</a> when accessing a Yammer network. 
-</div>
+> Always consider the <a href="https://developer.yammer.com/docs/rest-api-rate-limits">REST API and Rate Limits</a> when accessing a Yammer network. 
 
 ## Retrieve the groups in a network
 The snippet presented in this section is retrieving the list of groups in a network. You can then use this list and perform other operations.

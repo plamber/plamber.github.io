@@ -14,12 +14,8 @@ You can perform searches in Yammer as described [here](https://developer.yammer.
 - Uploaded files
 - Users
 
-<div class="alert success">
-    You can generate the baerer token (access token) as described in <a href="/2019-09-01-Access-Yammer-API-Through-Rest">this</a> post. 
-</div>
+> You can generate the baerer token (access token) as described in <a href="/Access-Yammer-API-Through-Rest">this</a> post. 
 
-<div class="alert">
-    Always consider the <a href="https://developer.yammer.com/docs/rest-api-rate-limits">REST API and Rate Limits</a> when accessing a Yammer network. 
-</div>
+> Always consider the <a href="https://developer.yammer.com/docs/rest-api-rate-limits">REST API and Rate Limits</a> when accessing a Yammer network. 
 
 <script src="https://gist.github.com/plamber/050680ed7496312b84880fdbee1362bf.js"></script>

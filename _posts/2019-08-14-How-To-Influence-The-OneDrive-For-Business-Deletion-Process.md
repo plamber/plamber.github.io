@@ -4,7 +4,7 @@ title:  "How do I influence the OneDrive for Business deletion process?"
 author: plamber
 categories: [ Governance, OneDrive ]
 tags: [PowerShell, OneDrive, Office 365, Microsoft 365]
-featured: true
+featured: false
 ---
 Users with a valid SharePoint Online license are eligible to get a dedicated OneDrive for Business site to store their contents. Just like a cloud-based personal hard drive. This OneDrive site will store all contents synchronized with the OneDrive for Business client or stored through other means to the OneDrive site.
  

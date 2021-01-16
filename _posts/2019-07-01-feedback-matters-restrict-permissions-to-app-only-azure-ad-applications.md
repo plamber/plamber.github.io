@@ -29,3 +29,5 @@ It would be awesome to obtain a way to limit such types of applications on the r
 #### What has happened so far? ####
 * 31st May 2019: submission
 * 24th June 2019: Microsoft responds that they are working on it 
+* 01st October 2020: Resource-specific-consent (RCS) for Teams was introduced
+* 01st January 2021: Admins can now limit the access to a site collection for app only applications 

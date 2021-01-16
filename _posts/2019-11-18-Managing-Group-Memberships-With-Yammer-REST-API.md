@@ -9,13 +9,9 @@ series: YammerRestApi
 ---
 This post will show how to use the Yammer REST API for managing the group memberships of a group. You can find the documentation of the Yammer REST API [here](https://developer.yammer.com/docs/).
 
-<div class="alert success">
-    You can generate the baerer token (access token) as described in <a href="/2019-09-01-Access-Yammer-API-Through-Rest">this</a> post. 
-</div>
+> You can generate the baerer token (access token) as described in <a href="/Access-Yammer-API-Through-Rest">this</a> post. 
 
-<div class="alert">
-    Always consider the <a href="https://developer.yammer.com/docs/rest-api-rate-limits">REST API and Rate Limits</a> when accessing a Yammer network. 
-</div>
+> Always consider the <a href="https://developer.yammer.com/docs/rest-api-rate-limits">REST API and Rate Limits</a> when accessing a Yammer network. 
 
 ### Add a member to a group
 <p>You can use the snippet below to add a new member to a group. The group id can be retrieved using the techniques explained in a <a href="/2019-09-04-Working-With-The-Group-Yammer-REST-API">previous post</a>.</p>

@@ -9,13 +9,9 @@ series: YammerRestApi
 ---
 You can delete a message through API as described [here](https://developer.yammer.com/docs/messagesid). The snippet below shows how you can do it through PowerShell. You simply need a bearer token and the message id to delete.
 
-<div class="alert success">
-    You can generate the baerer token (access token) as described in <a href="/2019-09-01-Access-Yammer-API-Through-Rest">this</a> post. 
-</div>
+> You can generate the baerer token (access token) as described in <a href="/Access-Yammer-API-Through-Rest">this</a> post. 
 
-<div class="alert">
-    Always consider the <a href="https://developer.yammer.com/docs/rest-api-rate-limits">REST API and Rate Limits</a> when accessing a Yammer network. 
-</div>
+> Always consider the <a href="https://developer.yammer.com/docs/rest-api-rate-limits">REST API and Rate Limits</a> when accessing a Yammer network. 
 
 To remove a message, you must either 
 - have posted the message yourself

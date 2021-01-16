@@ -9,13 +9,9 @@ series: YammerRestApi
 ---
 In this post I would like to go through some of the endpoints in the [Yammer REST API](https://developer.yammer.com/docs/) handling user profiles in a network. 
 
-<div class="alert success">
-    You can generate the baerer token (access token) as described in <a href="/2019-09-01-Access-Yammer-API-Through-Rest">this</a> post. 
-</div>
+> You can generate the baerer token (access token) as described in <a href="/Access-Yammer-API-Through-Rest">this</a> post. 
 
-<div class="alert">
-    Always consider the <a href="https://developer.yammer.com/docs/rest-api-rate-limits">REST API and Rate Limits</a> when accessing a Yammer network. 
-</div>
+> Always consider the <a href="https://developer.yammer.com/docs/rest-api-rate-limits">REST API and Rate Limits</a> when accessing a Yammer network. 
 
 ### Retrieve the users in a network
 The snippet presented in this section is retrieving the list of users in a network. By default the list returns batches of 50 users. You can find other parameters under the official [documentation](https://developer.yammer.com/docs/usersjson). The default sorting is alphabetically, but you might want to sort by messages or followers with the sort_by query string. If you have more than 50 users, you might want to use the the page parameter to get different batches. 

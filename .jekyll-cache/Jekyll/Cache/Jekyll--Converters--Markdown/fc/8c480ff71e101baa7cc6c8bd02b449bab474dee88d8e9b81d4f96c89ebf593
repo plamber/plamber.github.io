@@ -1,2 +1,0 @@
-I"€<p>The Yammer REST Api allows you to return messages through the interface described <a href="https://developer.yammer.com/docs/messagesjson">here</a>. A call to that API returns a batch of 20 messages that can be limited to fewer messages with the <em>limit</em> operation. The drawback is that you canâ€™t ask for the last 500 messages without making multiple calls to the API.</p>
-:ET

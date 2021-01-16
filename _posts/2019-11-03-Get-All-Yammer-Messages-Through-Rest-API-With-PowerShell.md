@@ -11,12 +11,8 @@ The Yammer REST Api allows you to return messages through the interface describe
 
 Therefore, I created a PowerShell snippet that is doing the necessary Yammer API calls to return you the exact number of messages you would like to have. You can use this snippet as example on how you might handle other similar operations. 
 
-<div class="alert success">
-    You can generate the baerer token (access token) as described in <a href="/2019-09-01-Access-Yammer-API-Through-Rest">this</a> post. 
-</div>
+> You can generate the baerer token (access token) as described in <a href="/Access-Yammer-API-Through-Rest">this</a> post. 
 
-<div class="alert">
-    Always consider the <a href="https://developer.yammer.com/docs/rest-api-rate-limits">REST API and Rate Limits</a> when accessing a Yammer network. 
-</div>
+> Always consider the <a href="https://developer.yammer.com/docs/rest-api-rate-limits">REST API and Rate Limits</a> when accessing a Yammer network. 
 
 <script src="https://gist.github.com/plamber/7186fad364fb671b7d6ebe06347ef68c.js?file=getallmessages.ps1"></script>
