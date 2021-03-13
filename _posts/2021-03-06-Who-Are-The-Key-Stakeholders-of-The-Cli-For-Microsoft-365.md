@@ -4,6 +4,7 @@ title:  "Who are the key stakeholders of the CLI for Microsoft 365?"
 author: plamber
 categories: [ Development, GitHub, CLI ]
 tags: [CLI]
+featured: true
 ---
 The [CLI for Microsoft 365](https://github.com/pnp/cli-microsoft365) is a cross-platform command-line interface used to manage or automate Microsoft 365 resources. It is a PnP and community-driven initiative that is growing rapidly over time. Every project has key stakeholders that approach the CLI in different ways.
 
