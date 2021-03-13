@@ -4,7 +4,7 @@ title:  "How do I map OneDrive with another drive?"
 author: plamber
 categories: [ Development, PowerShell, OneDrive ]
 tags: [OneDrive, Office 365, Microsoft 365]
-featured: true
+featured: false
 ---
 The OneDrive for Business folder naming convention is `OneDrive - {CompanyName}`. Most applications can cope with this naming when storing data on a local drive. In a [previous blogpost](/Rename-Or-Remove-Spaces-From-OneDrive-Folder-Name) I showed how you can map a symlink path to an OneDrive folder to fool incompatible applications to write to your OneDrive.
 
